@@ -39,14 +39,13 @@ end
 # Write a symmetric_substrings method that takes a string and returns an array
 # of substrings that are palindromes, e.g. symmetric_substrings("cool") => ["oo"]
 # Only include substrings of length > 1.
-
 def symmetric_substrings(str)
-  symm_subs = ""
+  symm_subs = []
 
   str.length.times do |start_pos|
-    (2..(length - start_pos)).each do |len|
+    (2..(str.length - start_pos)).each do |len|
       substr = str[start_pos...(start_pos + len)]
-      symm_subs << substr if substr = substr.reverse
+      symm_subs.push(substr) if substr == substr.reverse
     end
   end
 
@@ -59,5 +58,5 @@ end
 
 def all_unique_chars?(str)
   letters = str.split('').reject{ |char| char == '  '}
-  letters.uniq.length = letters.length
+  letters.uniq.length == letters.length
 end
