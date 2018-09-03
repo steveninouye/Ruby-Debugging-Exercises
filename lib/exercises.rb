@@ -24,17 +24,17 @@ end
 # Write a method that returns the largest prime factor of a given integer.
 
 def prime?(num)
-  (2..num).none? { |factor| num % factor == 0 }
+  (2...num).none? { |factor| num % factor == 0 }
 end
 
 def largest_prime_factor(num)
   num.downto(2) do |factor|
     if (num % factor).zero?
-      return factor if prime(factor)
+      return factor if prime?(factor)
     end
   end
+  nil
 end
-
 
 # Write a symmetric_substrings method that takes a string and returns an array
 # of substrings that are palindromes, e.g. symmetric_substrings("cool") => ["oo"]
